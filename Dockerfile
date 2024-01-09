@@ -4,10 +4,10 @@ FROM openjdk:11-jdk-slim
 WORKDIR /app
 
 # Copy the HelloWorld.java file into the Docker container
-COPY  src/ Helloworld.java .
+COPY  src/ /app/src/Helloworld.java .
 # Compile the HelloWorld.java file
-RUN javac HelloWorld.java
+RUN javac /app/src/HelloWorld.java
 
 # Specify the command to run when the Docker container starts
 
-CMD ["java", "Helloworld.java"]
+CMD ["java",  "-cp", "/app/src", "Helloworld.java"]
